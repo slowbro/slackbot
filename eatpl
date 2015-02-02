@@ -1,0 +1,54 @@
+#!/bin/bash
+# $0 event_name action_name
+
+cd protected/components/Slack/Event
+
+if [[ "$#" != "2" ]];then
+    echo -e "Usage: $0 <event_name[:subtype_name]> <actionname>\n\nCreates ActionnameEventAction.php using template, into protected/components/Slack/Event/event_name[/subtype_name]/"
+    exit 1
+fi
+
+RAW_EVENT=$1
+RAW_ACTION=$2
+
+TPL="Template.phpt"
+
+if [[ ! -f Template.phpt ]];then
+    echo "Missing base template!";
+    exit 1
+fi
+
+event=`echo "$RAW_EVENT" | cut -d: -f1`
+event=${event,,}
+event=${event^}
+
+subtype=`echo "$RAW_EVENT" | cut -d: -f2`
+
+if [[ "$subtype" != "$RAW_EVENT" ]];then
+    subtype=${subtype,,}
+    subtype=${subtype^}
+    full_event="$event\\\\$subtype"
+else
+    subtype=""
+    full_event=$event
+fi
+
+action=${RAW_ACTION,,}
+action=${action^}
+
+if [[ -f "$event/$subtype/Template.phpt" ]];then
+    echo "Using template for $RAW_EVENT!"
+    TPL="$event/$subtype/Template.phpt"
+fi
+
+dir="$event/$subtype"
+mkdir -p $dir
+file="$dir/${action}EventAction.php"
+
+if [[ -f $file ]];then
+    echo "File already exists: $file"
+    exit 2
+fi
+
+cat $TPL | sed -e "s/EVENT_NAME/$full_event/g" | sed -e "s/ACTION_NAME/$action/g" > $file
+vim $file

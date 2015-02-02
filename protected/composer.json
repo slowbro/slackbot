@@ -1,0 +1,21 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/slowbro/php-slack"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "components/"
+        }
+    },
+    "require" : {
+        "frlnc/php-slack": "dev-master",
+        "yiisoft/yii": "1.1.*",
+        "yiiext/migrate-command": "dev-master",
+        "adyg/php-imgur-api-client": "1.0.0",
+        "connorvg/laravel-wolframalpha": "dev-master",
+        "devristo/phpws": "dev-master"
+    }
+}
