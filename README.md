@@ -20,4 +20,4 @@ For example, if you wanted to make a new action for the Message event, with the 
 
     ./eatpl message:bot_message nameofaction
 
-This would create a new file, `protected/components/Slack/Event/Message/Bot_messgae/NameofactionEventAction.php`, from the highest-level `Template.php` it can find - in this case, in `protected/components/Slack/Event/Message/`
+This would create a new file, `protected/components/Slack/Event/Message/Bot_messgae/NameofactionEventAction.php`, from the highest-level `Template.phpt` it can find - in this case, in `protected/components/Slack/Event/Message/`
