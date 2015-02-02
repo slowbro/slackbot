@@ -5,10 +5,10 @@ Work in progress.
 
 ## Getting Started
 
-1) import `schema.sql` into a new database
-2) move `protected/config/bot.php.example` to `protected/config/bot.php` and update it with your database info.
-3) `INSERT INTO config VALUES ('slack.apikey', 'YOUR_SLACK_XOP_KEY');` at minimum. Other keys are needed for some commands to function.
-4) ./bot.php start
+1. import `schema.sql` into a new database
+2. move `protected/config/bot.php.example` to `protected/config/bot.php` and update it with your database info.
+3. `INSERT INTO config VALUES ('slack.apikey', 'YOUR_SLACK_XOP_KEY');` at minimum. Other keys are needed for some commands to function.
+4. ./bot.php start
 
 ## Using `eatpl`
 
