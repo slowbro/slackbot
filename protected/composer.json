@@ -3,6 +3,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/slowbro/php-slack"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/slowbro/stream"
         }
     ],
     "autoload": {
@@ -11,7 +15,8 @@
         }
     },
     "require" : {
-        "frlnc/php-slack": "dev-master",
+        "react/stream": "dev-master as 0.4.3",
+        "frlnc/php-slack": "dev-api_methods",
         "yiisoft/yii": "1.1.*",
         "yiiext/migrate-command": "dev-master",
         "adyg/php-imgur-api-client": "1.0.0",
