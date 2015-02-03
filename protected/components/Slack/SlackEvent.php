@@ -3,11 +3,13 @@
 class SlackEvent {
 
     public $slack;
+    public $init_time;
 
     private $data;
     private $_json;
 
     public function __construct(){
+        $this->init_time = microtime(true);
         $this->slack  = Slack::factory();
     }
 

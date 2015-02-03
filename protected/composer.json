@@ -7,6 +7,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/slowbro/stream"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/slowbro/Laravel-WolframAlpha"
         }
     ],
     "autoload": {
@@ -21,6 +25,7 @@
         "yiiext/migrate-command": "dev-master",
         "adyg/php-imgur-api-client": "1.0.0",
         "connorvg/laravel-wolframalpha": "dev-master",
-        "devristo/phpws": "dev-master"
+        "ratchet/pawl": "dev-master",
+        "zendframework/zend-log": "2.3.*"
     }
 }

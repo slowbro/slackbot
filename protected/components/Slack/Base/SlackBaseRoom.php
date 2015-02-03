@@ -7,7 +7,7 @@ class SlackBaseRoom extends SlackBaseObject {
     public $is_channel = false;
 
     public function message($text){
-        $message = new SlackMessage;
+        $message = new \Slack\SlackMessage;
         return $message->setChannel($this->id)->setText($text)->send();
     }
 
