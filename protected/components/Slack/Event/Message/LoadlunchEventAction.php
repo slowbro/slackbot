@@ -3,7 +3,7 @@
 class LoadlunchEventAction extends \Slack\Event\Message\DefaultEventAction {
 
     protected $trigger = true;
-    protected $regex   = '#^loadlunch\s(.*)#i';
+    protected $regex   = '#^loadlunch\s(.*)#is';
 
     public function run(){
         $tx = $this->matches[1];
@@ -12,6 +12,8 @@ class LoadlunchEventAction extends \Slack\Event\Message\DefaultEventAction {
         foreach($lines as $l){
             if(preg_match('#^(\w+,\s)?\w+\s\d+(th|rd|nd|st)#', $l) !== 0)
                 $valid_lines[] = $l;
+            elseif(empty($l))
+                continue;
             else
                 $this->message->reply("Invalid line: $l");
         }
@@ -25,11 +27,13 @@ class LoadlunchEventAction extends \Slack\Event\Message\DefaultEventAction {
                 $this->message->reply("Invalid date: {$s['0']}");
                 continue;
             }
-            $l = new \Lunch;
-            $l->day = $day;
-            $l->food = $s['1'];
-            if(!$l->save()){
-                $this->message->reply("Could not load {$s['0']}: ".$l->getError());
+            try {
+                $l = new \Lunch;
+                $l->day = $day;
+                $l->food = $s['1'];
+                $l->save();
+            } catch (\Exception $e){
+                $this->message->reply("Could not load {$s['0']}: ".$e->getMessage());
                 continue;
             }
             $i++;

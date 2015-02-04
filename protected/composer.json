@@ -2,10 +2,6 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/slowbro/php-slack"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/slowbro/stream"
         },
         {
@@ -20,7 +16,7 @@
     },
     "require" : {
         "react/stream": "dev-master as 0.4.3",
-        "frlnc/php-slack": "dev-api_methods",
+        "frlnc/php-slack": "dev-master",
         "yiisoft/yii": "1.1.*",
         "yiiext/migrate-command": "dev-master",
         "adyg/php-imgur-api-client": "1.0.0",
