@@ -20,4 +20,9 @@ class SlackChannel extends \Slack\Base\SlackBaseRoom {
         $slack->execute('channels.leave', ['channel'=>$this->id]);
     }
 
+    public function addMember($member_id){
+        $this->members[] = $member_id;
+        return true;
+    }
+
 }

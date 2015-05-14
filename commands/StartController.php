@@ -1,11 +1,15 @@
 <?php
 
-class StartCommand extends CConsoleCommand {
+namespace slackbot\commands;
 
-    public function run($args){
+use yii\console\Controller;
+use slackbot\models\Config;
+
+class StartController extends Controller {
+
+    public function actionIndex($args=""){
         $slack = \Slack\Slack::factory();
         $ws = $slack->startRtm();
-
         # logger
         $logger = new \Zend\Log\Logger();
         $writer = new \Zend\Log\Writer\Stream("php://output");
@@ -21,7 +25,7 @@ class StartCommand extends CConsoleCommand {
                 $slack->setClient($conn);
 
                 $conn->on("message", function($message){
-                    $event = new Slack\SlackEvent;
+                    $event = new \Slack\SlackEvent;
                     $event->parse($message);
                 });
             },

@@ -1,5 +1,4 @@
-protected/runtime/application.log
-protected/config/bot.php
-protected/models/Treplog.php
-protected/vendor/
-protected/composer.lock
+runtime/application.log
+config/db.php
+vendor/
+composer.lock

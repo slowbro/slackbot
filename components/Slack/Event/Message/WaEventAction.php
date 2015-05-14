@@ -9,7 +9,7 @@ class WaEventAction extends DefaultEventAction {
         $query = preg_replace('#^wa\s+#', '', $this->getCleanText());
         if(!$query)
             return false;
-        $appId = \Config::getValue('wa.appid');
+        $appId = \slackbot\models\Config::getValue('wa.appid');
         $wa = new \ConnorVG\WolframAlpha\WolframAlpha($appId);
         $ans = $wa->easyQuery($query);
         if(is_array($ans)){

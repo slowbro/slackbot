@@ -1,0 +1,8 @@
+<?php
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=localhost;dbname=slackbot',
+    'username' => 'slackbot',
+    'password' => 'super_secret_password',
+    'charset' => 'utf8',
+];

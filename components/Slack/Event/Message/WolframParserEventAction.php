@@ -6,7 +6,7 @@ class WolframParserEventAction extends DefaultEventAction {
     protected $regex = '#^((what|when|where|why|how|who)((\')?s)?|(are|is|do))\s#';
 
     public function run(){
-        $appId = \Config::getValue('wa.appid');
+        $appId = \slackbot\models\Config::getValue('wa.appid');
         $wa = new \ConnorVG\WolframAlpha\WolframAlpha($appId);
         $ans = $wa->easyQuery($this->getCleanText());
         if(is_array($ans)){

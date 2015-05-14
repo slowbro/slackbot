@@ -2,10 +2,6 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/slowbro/stream"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/slowbro/Laravel-WolframAlpha"
         }
     ],
@@ -15,13 +11,13 @@
         }
     },
     "require" : {
+        "yiisoft/yii2": "2.*",
         "react/stream": "dev-master as 0.4.3",
         "frlnc/php-slack": "dev-master",
-        "yiisoft/yii": "1.1.*",
-        "yiiext/migrate-command": "dev-master",
         "adyg/php-imgur-api-client": "1.0.0",
         "connorvg/laravel-wolframalpha": "dev-master",
         "ratchet/pawl": "dev-master",
-        "zendframework/zend-log": "2.3.*"
+        "zendframework/zend-log": "2.3.*",
+        "react/socket-client": "dev-master"
     }
 }

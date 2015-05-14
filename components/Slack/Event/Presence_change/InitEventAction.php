@@ -6,7 +6,7 @@ class InitEventAction extends \Slack\Event\EventAction {
         $user = $this->state->findUserById($this->event->user);
         if(!$user)
             throw new \Exception("presence_change: Unknown user: {$this->event->user}");
-        $user->setPresence($json->presence);
+        $user->setPresence($this->event->presence);
     }
 
 }

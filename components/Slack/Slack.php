@@ -15,7 +15,7 @@ class Slack {
     private $messageCounter = 1;
 
     public function __construct(){
-        $slack_key = \Config::getValue('slack.apikey');
+        $slack_key = \slackbot\models\Config::getValue('slack.apikey');
         $this->interactor = new CurlInteractor;
         $this->interactor->setResponseFactory(new SlackResponseFactory);
         $this->commander = new Commander($slack_key, $this->interactor);

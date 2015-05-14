@@ -115,8 +115,8 @@ class ReactionEventAction extends DefaultEventAction {
             return $this->reactionList();
         elseif($query === "list full")
             return $this->reactionList(true);
-        $i_id = \Config::getValue('imgur.client_id');
-        $i_secret = \Config::getValue('imgur.client_secret');
+        $i_id = \slackbot\models\Config::getValue('imgur.client_id');
+        $i_secret = \slackbot\models\Config::getValue('imgur.client_secret');
         if(!$i_id || !$i_secret)
             throw new Exception('Missing Imgur Configuration');
         if(!$imgur = new \Imgur\Client())
