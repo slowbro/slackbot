@@ -3,12 +3,20 @@
 Extensible, PHP-based bot for Slack, using Slack's Real-Time Messaging API, using Yii 2.0.
 Work in progress. 
 
+## Requirements
+
+1. PHP >5.6.8 OR PHP >5.5.20 (untested.. but it should work)
+2. OpenSSL development headers (openssl-devel on centos)
+3. libevent2 compiled and installed AFTER openssl headers installed: http://libevent.org/
+4. pecl `event` module installed with SSL support
+
 ## Getting Started
 
 1. import `schema.sql` into a new database
 2. move `config/db.php.example` to `config/db.php` and update it with your database info.
 3. `INSERT INTO config VALUES ('slack.apikey', 'YOUR_SLACK_XOP_KEY');` at minimum. Other keys are needed for some commands to function.
-4. bin/bot start
+4. run `composer update`
+5. `bin/bot start`
 
 ## Using `eatpl`
 
