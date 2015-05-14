@@ -8,7 +8,7 @@ class EventAction {
     protected $event;
     protected $slack;
     protected $state;
-    public $sort = 0;
+    public static $sort = 0;
 
     public function __construct($event){
         $this->event = $event;

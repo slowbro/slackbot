@@ -70,11 +70,19 @@ class SlackEvent {
         # now do the rest
         # load the classes first so we can sort them...
         $classes = glob($baseDir."/*EventAction.php");
+        $class_array = [];
         foreach($classes as $name){
             $name = str_replace($baseDir.'/', '', str_replace('.php','',$name));
             if(in_array($name,["InitEventAction", "DefaultEventAction"]))
                 continue;
             $class = "Slack\Event\\".ucfirst($this->data->type)."\\$name";
+            $class_array[] = ['class'=>$class,'sort'=>$class::$sort];
+        }
+        usort($class_array, function($a,$b){return $a['sort']-$b['sort'];});
+
+        # run the sorted clases
+        foreach($class_array as $ca){
+            $class = $ca['class'];
             try {
                 $action = new $class($this);
                 $action->run();
