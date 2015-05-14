@@ -1,4 +1,4 @@
-runtime/application.log
+runtime/logs/app.log
 config/db.php
 vendor/
 composer.lock
