@@ -1,6 +1,6 @@
 <?php namespace Slack\Event\Message;
 
-class PrintEventAction extends DefaultEventAction {
+class InitEventAction extends DefaultEventAction {
 
     public function run(){
         $logger = $this->slack->getLogger();

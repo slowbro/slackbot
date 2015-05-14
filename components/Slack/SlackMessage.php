@@ -60,12 +60,19 @@ class SlackMessage extends \Slack\Base\SlackBaseObject {
 
     public function send(){
         $slack = \Slack\Slack::factory();
+        $state = SlackState::getState();
         $message = [
             'type' => 'message',
             'channel' => $this->channel,
             'text' => $this->text
         ];
-        return $slack->send($message);
+        $ret = $slack->send($message);
+        $logger = $slack->getLogger();
+        $type = $this->getChannelType();
+        $chanObj = $this->getChannel();
+        $channelString = '/'.($type==self::TYPE_IM?'IM':$type.$chanObj->name);
+        $logger->info("({$state->self->name}$channelString) {$this->text}");
+        return $ret;
     }
 
     public function getChannelType(){

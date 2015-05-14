@@ -91,7 +91,7 @@ class SlackEvent {
                     break;
                 if($e instanceof \Slack\Exception\SkipActionException)
                     continue;
-                $logger->info("$name Unhandled Exception: ".$e->getMessage());
+                $logger->info("$class Unhandled Exception: ".$e->getMessage());
             } finally {
                 $action = null;
             }
