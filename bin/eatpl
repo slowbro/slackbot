@@ -1,10 +1,17 @@
 #!/bin/bash
 # $0 event_name action_name
 
-cd protected/components/Slack/Event
+BASE="$(pwd)/components/Slack/Event"
+
+if [[ ! -d $BASE ]];then
+    echo "I can't find your Event directory - make sure you're in the root of Slackbot."
+    exit 1
+fi
+
+cd $BASE
 
 if [[ "$#" != "2" ]];then
-    echo -e "Usage: $0 <event_name[:subtype_name]> <actionname>\n\nCreates ActionnameEventAction.php using template, into protected/components/Slack/Event/event_name[/subtype_name]/"
+    echo -e "Usage: $0 <event_name[:subtype_name]> <actionname>\n\nCreates ActionnameEventAction.php using template, into components/Slack/Event/event_name[/subtype_name]/"
     exit 1
 fi
 
