@@ -6,9 +6,10 @@ Work in progress.
 ## Requirements
 
 1. PHP >5.6.8 OR PHP >5.5.20 (untested.. but it should work)
-2. OpenSSL development headers (openssl-devel on centos)
-3. libevent2 compiled and installed AFTER openssl headers installed: http://libevent.org/
-4. pecl `event` module installed with SSL support
+2. PHP Modules: mbstring, pdo, mysql, xml
+3. OpenSSL development headers (openssl-devel on centos)
+4. libevent2 compiled and installed AFTER openssl headers installed: http://libevent.org/
+5. pecl `event` module installed with SSL support
 
 ## Getting Started
 
