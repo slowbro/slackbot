@@ -28,7 +28,7 @@ In order for some commands to work, you will need to set the following in the `c
 
 ## Using the Bot
 
-Slackbot comes with a number of build in commands. You can inspect the files in components/Slack/Event/Message/ for more details, but here's a short list. Note that most of these commands need the bot's name in front of them (i.e. `bot: roll 1d20`)
+Slackbot comes with a number of built in commands. You can inspect the files in components/Slack/Event/Message/ for more details, but here's a short list. Note that most of these commands need the bot's name in front of them (i.e. `bot: roll 1d20`)
 
 1. roll: roll dice. syntax `bot: roll [number of dice]d[die side count][, ...]`
 2. reaction: paste a reaction gif based on your text. requires imgur configuration. example `bot: reaction deal with it`
