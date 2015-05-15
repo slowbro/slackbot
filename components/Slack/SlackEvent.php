@@ -61,7 +61,7 @@ class SlackEvent {
                 $action = new $class($this);
                 $action->run();
             } catch (Exception $e){
-                $logger->info("Unhandled Exception: ".get_class($e)."; ".$e->getMessage());
+                $logger->info("Unhandled Exception of type ".get_class($e).": ".$e->getMessage());
             } finally {
                 $action = null;
             }
@@ -91,7 +91,7 @@ class SlackEvent {
                     break;
                 if($e instanceof \Slack\Exception\SkipActionException)
                     continue;
-                $logger->info("$class Unhandled Exception: ".$e->getMessage());
+                $logger->info("$class Unhandled Exception of type ".get_class($e).": ".$e->getMessage());
             } finally {
                 $action = null;
             }

@@ -1,6 +1,6 @@
 <?php
 return [
-    'class' => 'yii\db\Connection',
+    'class' => 'HealingConnection',
     'dsn' => 'mysql:host=localhost;dbname=slackbot',
     'username' => 'slackbot',
     'password' => 'super_secret_password',
