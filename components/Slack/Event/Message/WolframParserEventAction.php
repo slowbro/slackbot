@@ -9,8 +9,9 @@ class WolframParserEventAction extends DefaultEventAction {
         $appId = \slackbot\models\Config::getValue('wa.appid');
         $wa = new \ConnorVG\WolframAlpha\WolframAlpha($appId);
         $ans = $wa->easyQuery($this->getCleanText());
+        $dym = $wa->didyoumean;
         if(is_array($ans)){
-            $a = str_replace('Result:', '', $ans[0]);
+            $a = preg_replace('#(Result|Response):#', '', $ans[0]);
             $this->message->reply(trim($a));
         } else {
             $this->message->reply("I don't know :(");
