@@ -37,7 +37,6 @@ Slackbot comes with a number of built in commands. You can inspect the files in 
 5. wa: get a more detailed response from Woldfram, or ask something without having to form it into a question. example: `bot: wa 192.168.0.0/21`
 6. asl: print a randomized silly A/S/L response. `bot: asl?`
 7. password generator. ask the bot to generate you one or more passwords, which will be IMed to you. examples: `bot: give me a password`, `bot: give me 5 passwords`
-8. leave: tell the bot to leave your channel/group. `bot: leave`
 
 ## Using `eatpl`
 
