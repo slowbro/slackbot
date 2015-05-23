@@ -114,6 +114,8 @@ class SlackMessage extends \Slack\Base\SlackBaseObject {
 
     public function reply($text, $namePrefix=true){
         $message = new SlackMessage;
+        if($this->getChannelType() === self::TYPE_IM)
+            $namePrefix = false;
         if($namePrefix){
             $user = $this->getUser();
             $text = $user->name.': '.$text;
