@@ -14,7 +14,7 @@ class DefaultEventAction extends \Slack\Event\EventAction {
         parent::__construct($event);
         $this->message = new SlackMessage($this->event->asObject());
         if(
-            ($this->trigger && (preg_match("#^{$this->state->self->name}(:|,)?\s#i", $this->message->text) === 0)) || # check that we were directly triggered
+           ($this->trigger && ($this->message->getChannelType() !== SlackMessage::TYPE_IM && preg_match("#^{$this->state->self->name}(:|,)?\s#i", $this->message->text) === 0)) || #check that we were directly triggered
             ($this->regex && (preg_match($this->regex, $this->getCleanText(), $this->matches) === 0)) #check that our regex matched
           ){
             throw new \Slack\Exception\SkipActionException;
