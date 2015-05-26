@@ -3,7 +3,7 @@
 class WolframParserEventAction extends DefaultEventAction {
 
     protected $trigger = true;
-    protected $regex = '#^((what|when|where|why|how|who)((\')?s)?|(are|is|do))\s#';
+    protected $regex = '#^((what|when|where|why|how|who|which)((\')?s)?|(are|is|do))\s#';
 
     public function run(){
         $appId = \slackbot\models\Config::getValue('wa.appid');
