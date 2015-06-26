@@ -1,6 +1,6 @@
 <?php namespace Slack\Event\Channel_created;
 
-class InitEventAction extends EventAction {
+class InitEventAction extends \Slack\Event\EventAction {
 
     protected $trigger = false;
 
