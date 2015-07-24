@@ -21,8 +21,8 @@ class Slack {
         $this->commander = new Commander($slack_key, $this->interactor);
     }
 
-    public static function factory(){
-        if(!self::$slack)
+    public static function factory($overwrite=false){
+        if(!self::$slack || $overwrite)
             self::$slack = new Slack;
         return self::$slack;
     }

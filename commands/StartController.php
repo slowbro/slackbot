@@ -8,7 +8,7 @@ use slackbot\models\Config;
 class StartController extends Controller {
 
     public function actionIndex($args=""){
-        $slack = \Slack\Slack::factory();
+        $slack = \Slack\Slack::factory(true);
         $ws = $slack->startRtm();
         # logger
         $logger = new \Zend\Log\Logger();
