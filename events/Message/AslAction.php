@@ -1,6 +1,6 @@
-<?php namespace Slack\Event\Message;
+<?php namespace Event\Message;
 
-class AslEventAction extends DefaultEventAction {
+class AslAction extends \Slowbro\Slack\Event\Message\BaseAction {
 
     protected $trigger = true;
     protected $regex = '#^a/s/l(\?)?#';
@@ -24,7 +24,7 @@ class AslEventAction extends DefaultEventAction {
         $ws = array_rand($this->s);
         $wl = array_rand($this->l);
         $this->message->reply("$a/{$this->s[$ws]}/{$this->l[$wl]}");
-        throw new \Slack\Exception\StopProcessingException;
+        throw new \Slowbro\Slack\Exception\StopProcessingException;
     }
 
 }

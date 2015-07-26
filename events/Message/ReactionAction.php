@@ -1,6 +1,6 @@
-<?php namespace Slack\Event\Message;
+<?php namespace Event\Message;
 
-class ReactionEventAction extends DefaultEventAction {
+class ReactionAction extends \Slowbro\Slack\Event\Message\BaseAction {
 
     private $albumList = array(
         [
@@ -134,7 +134,7 @@ class ReactionEventAction extends DefaultEventAction {
             $img = $images[$key];
             $channel->message($img->getLink());
         }
-        throw new \Slack\Exception\StopProcessingException;
+        throw new \Slowbro\Slack\Exception\StopProcessingException;
     }
 
     protected function reactionList($full=false){

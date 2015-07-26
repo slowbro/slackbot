@@ -1,6 +1,6 @@
-<?php namespace Slack\Event\Message;
+<?php namespace Event\Message;
 
-class PasswordEventAction extends \Slack\Event\Message\DefaultEventAction {
+class PasswordAction extends \Slowbro\Slack\Event\Message\BaseAction {
 
     protected $trigger = true;
     protected $regex   = '#^(give|make) me (a|[0-9]+) passwords?#i';
@@ -11,7 +11,7 @@ class PasswordEventAction extends \Slack\Event\Message\DefaultEventAction {
         } else {
             if($this->matches[2] > 20){
                 $this->message->reply("That's too many.. how many passwords do you need?!");
-                throw new \Slack\Exception\StopProcessingException;
+                throw new \Slowbro\Slack\Exception\StopProcessingException;
             }
             $i = $this->matches[2];
         }
@@ -22,7 +22,7 @@ class PasswordEventAction extends \Slack\Event\Message\DefaultEventAction {
         }
         $this->message->reply("Ok, I IMed ".($i>1?'those':'it')." to you.");
         $user->im($msg);
-        throw new \Slack\Exception\StopProcessingException;
+        throw new \Slowbro\Slack\Exception\StopProcessingException;
     }
 
     private function random_password( $length = 12 ) {

@@ -1,6 +1,6 @@
-<?php namespace Slack\Event\Group_joined;
+<?php namespace Event\Group_joined;
 
-class WarningEventAction extends \Slack\Event\EventAction {
+class WarningAction extends \Slowbro\Slack\Event\Action {
 
     public function run(){
         $group = $this->state->findGroupById($this->event->channel->id);

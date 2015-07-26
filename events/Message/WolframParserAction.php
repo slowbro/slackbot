@@ -1,6 +1,6 @@
-<?php namespace Slack\Event\Message;
+<?php namespace Event\Message;
 
-class WolframParserEventAction extends DefaultEventAction {
+class WolframParserAction extends \Slowbro\Slack\Event\Message\BaseAction {
 
     protected $trigger = true;
     protected $regex = '#^((what|when|where|why|how|who|which)((\')?s)?|(are|is|do))\s#';
@@ -21,7 +21,7 @@ class WolframParserEventAction extends DefaultEventAction {
             $this->message->reply("Something went wrong: ".$e->getMessage());
             echo $e;
         } finally {
-            throw new \Slack\Exception\StopProcessingException;
+            throw new \Slowbro\Slack\Exception\StopProcessingException;
         }
     }
 

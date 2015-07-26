@@ -8,8 +8,8 @@ use slackbot\models\Config;
 class StartController extends Controller {
 
     public function actionIndex($args=""){
-        $slack = \Slack\Slack::factory(true);
-        $ws = $slack->startRtm();
+        $slack = \Slowbro\Slack\Client::factory(true, \slackbot\models\Config::getValue('slack.apikey'), \Yii::getAlias("@slackbot/events/"));
+
         # logger
         $logger = new \Zend\Log\Logger();
         $writer = new \Zend\Log\Writer\Stream("php://output");
@@ -18,25 +18,8 @@ class StartController extends Controller {
         $logger->addWriter($writer);
         $slack->setLogger($logger);
 
-        $loop = \React\EventLoop\Factory::create();
-        $connector = new \Ratchet\Client\Factory($loop);
-        $connector($ws)->then(
-            function(\Ratchet\Client\WebSocket $conn) use ($slack){
-                $slack->setClient($conn);
-
-                $conn->on("message", function($message){
-                    $event = new \Slack\SlackEvent;
-                    $event->parse($message);
-                });
-            },
-            function ($e) use ($loop, $logger){
-                $logger->info("Could not connect: {$e->getMessage()}");
-                $loop->stop();
-            }
-        );
-
-        $loop->run();
-
+        $slack->start();
+        exit;
     }
 
 }

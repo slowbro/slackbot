@@ -1,6 +1,6 @@
-<?php namespace Slack\Event\Message;
+<?php namespace Event\Message;
 
-class RouletteEventAction extends \Slack\Event\Message\DefaultEventAction {
+class RouletteAction extends \Slowbro\Slack\Event\Message\BaseAction {
 
     protected $trigger = true;
     protected $regex   = '#^roulette#i';
@@ -14,7 +14,7 @@ class RouletteEventAction extends \Slack\Event\Message\DefaultEventAction {
                 $this->message->reply("You don't have an active game.");
             else
                 $this->message->reply("You have dodged the bullet {$ch['n']} times - it's currently sitting in chamber #".(array_search(1, $ch['c'])+1));
-            throw new \Slack\Exception\StopProcessingException;
+            throw new \Slowbro\Slack\Exception\StopProcessingException;
         }
         if(!$ch){
             $ch = ['n'=>0, 'c'=>[1,0,0,0,0,0]];
@@ -31,7 +31,7 @@ class RouletteEventAction extends \Slack\Event\Message\DefaultEventAction {
             $ch['n']++;
             $storage->insert('RouletteEventAction',$this->message->user, $ch);
         }
-        throw new \Slack\Exception\StopProcessingException;
+        throw new \Slowbro\Slack\Exception\StopProcessingException;
     }
 
     private function spinChambers(&$ch, $force){
@@ -53,7 +53,7 @@ class RouletteEventAction extends \Slack\Event\Message\DefaultEventAction {
                 break;
             default:
                 $this->message->reply("Wait, hold on - what do you mean '$force'? I only know 'soft', 'hard', and 'random'");
-                throw new \Slack\Exception\StopProcessingException;
+                throw new \Slowbro\Slack\Exception\StopProcessingException;
         }
         for($i=0;$i<rand($low,$high);$i++){
             array_push($ch, array_shift($ch));

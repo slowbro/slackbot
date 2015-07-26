@@ -3,15 +3,21 @@
         {
             "type": "vcs",
             "url": "https://github.com/slowbro/Laravel-WolframAlpha"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/slowbro/slack"
         }
     ],
     "autoload": {
         "psr-4": {
-            "": "components/"
+            "": "components/",
+            "Event\\": "events/"
         }
     },
     "require" : {
         "yiisoft/yii2": "2.*",
+        "slowbro/slack": "dev-master",
         "react/stream": "dev-master as 0.4.3",
         "frlnc/php-slack": "dev-master",
         "adyg/php-imgur-api-client": "1.0.0",

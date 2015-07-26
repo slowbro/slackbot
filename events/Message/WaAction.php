@@ -1,6 +1,6 @@
-<?php namespace Slack\Event\Message;
+<?php namespace Event\Message;
 
-class WaEventAction extends DefaultEventAction {
+class WaAction extends \Slowbro\Slack\Event\Message\BaseAction {
 
     protected $trigger = true;
     protected $regex = '#^wa\s+#';
@@ -18,7 +18,7 @@ class WaEventAction extends DefaultEventAction {
         } else {
             $this->message->reply($ans);
         }
-        throw new \Slack\Exception\StopProcessingException;
+        throw new \Slowbro\Slack\Exception\StopProcessingException;
     }
 
 }
